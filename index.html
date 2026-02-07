@@ -3,262 +3,218 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>StudyBuddy AI - Ultimate Hub (All in One)</title>
-<meta name="theme-color" content="#0b1225" />
-
+<title>StudyBuddy AI - Ultimate Hub</title>
 <style>
 :root{
   --bg:#0b1225;
-  --card:#111a33;
-  --card2:#0f1730;
+  --panel:#111a33;
+  --panel2:#0f1830;
   --text:#ffffff;
-  --muted:rgba(255,255,255,.65);
-  --accent:#22c55e;
-  --blue:#2563eb;
-  --danger:#ef4444;
-  --border:rgba(255,255,255,.10);
+  --muted:rgba(255,255,255,.75);
+  --line:rgba(255,255,255,.12);
+  --accent:#2563eb;
+  --good:#22c55e;
+  --bad:#ef4444;
+  --chip:#1f2937;
+  --shadow:0 12px 30px rgba(0,0,0,.35);
 }
 .light{
   --bg:#f3f4f6;
-  --card:#ffffff;
-  --card2:#ffffff;
+  --panel:#ffffff;
+  --panel2:#ffffff;
   --text:#0b1225;
-  --muted:rgba(0,0,0,.55);
-  --border:rgba(0,0,0,.10);
+  --muted:rgba(11,18,37,.7);
+  --line:rgba(11,18,37,.12);
+  --accent:#2563eb;
+  --good:#16a34a;
+  --bad:#dc2626;
+  --chip:#e5e7eb;
+  --shadow:0 12px 30px rgba(0,0,0,.12);
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}
 body{
+  margin:0;
   background:var(--bg);
   color:var(--text);
-  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
   display:flex;
   justify-content:center;
 }
 .app{
-  width:1100px;
+  width:980px;
   max-width:100%;
   min-height:100vh;
   display:flex;
+  gap:12px;
+  padding:12px;
 }
 .sidebar{
-  width:280px;
-  background:linear-gradient(180deg,var(--card),var(--card2));
-  border-right:1px solid var(--border);
-  padding:14px;
+  width:290px;
+  max-width:290px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:12px;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:10px;
 }
 .brand{
-  padding:12px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
-}
-.brand h1{font-size:18px}
-.brand p{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.3}
-.nav{
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:.3px;
   display:flex;
-  flex-direction:column;
-  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
-.btn{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:14px;
-  cursor:pointer;
-  font-weight:bold;
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  border:1px solid var(--border);
-  text-align:left;
-  transition:.15s;
-}
-.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09)}
-.btn.active{
-  background:linear-gradient(135deg,#2f6cff,#1e4ed8);
-  border-color:rgba(255,255,255,.18);
-}
-.smallrow{
-  display:flex;
-  gap:8px;
-}
-.smallrow .btn{text-align:center}
-.footer{
-  margin-top:auto;
-  padding:12px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
+.small{
   font-size:12px;
-  color:var(--muted);
-  line-height:1.35;
+  opacity:.8;
 }
+.btnrow{display:flex;gap:8px}
+button{
+  border:none;
+  cursor:pointer;
+  border-radius:12px;
+  padding:10px 12px;
+  background:var(--chip);
+  color:var(--text);
+  font-weight:700;
+}
+button:hover{filter:brightness(1.08)}
+button:active{transform:scale(.98)}
+.btnAccent{background:var(--accent); color:#fff}
+.btnGood{background:var(--good); color:#fff}
+.btnBad{background:var(--bad); color:#fff}
+.nav{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.nav button{
+  padding:11px 10px;
+  font-size:13px;
+}
+hr{border:none;border-top:1px solid var(--line);margin:0}
+.card{
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+}
+.card h3{margin:0 0 10px 0;font-size:15px}
+.input{
+  width:100%;
+  padding:11px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--text);
+  outline:none;
+}
+.label{font-size:12px;opacity:.8;margin-bottom:6px}
 .main{
   flex:1;
-  padding:14px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
-  gap:12px;
+  overflow:hidden;
 }
 .topbar{
   display:flex;
-  gap:10px;
   align-items:center;
   justify-content:space-between;
-  padding:12px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
-}
-.topbar .left{
-  display:flex;
   gap:10px;
-  align-items:center;
+  padding:12px;
+  border-bottom:1px solid var(--line);
+}
+.pageTitle{
+  font-weight:900;
+  font-size:16px;
+}
+.pages{
+  flex:1;
+  overflow:auto;
+  padding:12px;
+}
+.page{display:none}
+.page.active{display:block}
+.chatWindow{
+  height:58vh;
+  min-height:360px;
+  max-height:70vh;
+  overflow:auto;
+  padding:12px;
+  background:rgba(0,0,0,.06);
+  border:1px solid var(--line);
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.msg{
+  max-width:82%;
+  padding:10px 12px;
+  border-radius:14px;
+  white-space:pre-wrap;
+  line-height:1.35;
+}
+.user{align-self:flex-end;background:var(--accent);color:#fff}
+.bot{align-self:flex-start;background:var(--chip)}
+.tools{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+.tools button{flex:1}
+.footerInput{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+.footerInput input{flex:1}
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
 }
 .pill{
   padding:8px 10px;
   border-radius:999px;
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--border);
+  background:var(--chip);
+  border:1px solid var(--line);
   font-size:12px;
-  color:var(--muted);
-}
-.topbar .right{
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-.iconbtn{
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  color:var(--text);
   cursor:pointer;
+  user-select:none;
 }
-.iconbtn:hover{background:rgba(255,255,255,.09)}
-.pages{
-  flex:1;
-  display:flex;
-  gap:12px;
-  min-height:0;
-}
-.page{
-  flex:1;
-  display:none;
-  min-height:0;
-}
-.page.active{display:flex}
-.card{
-  flex:1;
-  border-radius:18px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
-  padding:12px;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-}
-.card h2{font-size:16px;margin-bottom:10px}
-.sub{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.35}
-hr{
-  border:none;
-  height:1px;
-  background:var(--border);
-  margin:10px 0;
-}
-.input, input, textarea, select{
-  width:100%;
-  padding:12px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.05);
-  color:var(--text);
-  outline:none;
-}
-textarea{min-height:120px;resize:vertical}
-.row{display:flex;gap:10px;align-items:center}
-.row > *{flex:1}
-.green{background:linear-gradient(135deg,#22c55e,#16a34a);border:none;color:#fff}
-.blue{background:linear-gradient(135deg,#2f6cff,#1e4ed8);border:none;color:#fff}
-.red{background:linear-gradient(135deg,#ef4444,#b91c1c);border:none;color:#fff}
-.chatWrap{
-  flex:1;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.chatWindow{
-  flex:1;
-  min-height:0;
-  overflow:auto;
-  padding:10px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  background:rgba(0,0,0,.12);
-}
-.light .chatWindow{background:rgba(255,255,255,.55)}
-.msg{
-  max-width:78%;
-  padding:10px 12px;
-  border-radius:16px;
-  margin:8px 0;
-  white-space:pre-wrap;
-  line-height:1.35;
-}
-.msg.user{background:var(--blue);color:#fff;margin-left:auto}
-.msg.bot{background:rgba(255,255,255,.08);border:1px solid var(--border)}
-.light .msg.bot{background:#e5e7eb;color:#000}
-.chatInput{
-  display:flex;
-  gap:8px;
-}
-.chatInput input{flex:1}
-.badge{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  font-size:12px;
-  color:var(--muted);
-}
-.grid{
+.pill:hover{filter:brightness(1.08)}
+.grid2{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:1fr 1fr;
   gap:10px;
 }
-.gameBtn{
-  padding:14px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  cursor:pointer;
-  font-weight:bold;
-  text-align:center;
-}
-.gameBtn:hover{background:rgba(255,255,255,.10)}
-.mono{font-family:monospace}
-.codebox{
-  padding:12px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  background:rgba(0,0,0,.25);
-  overflow:auto;
-  white-space:pre-wrap;
-  font-family:monospace;
-  font-size:13px;
-  line-height:1.35;
-}
-.light .codebox{background:#111827;color:#fff}
-.note{font-size:12px;color:var(--muted);line-height:1.35}
-@media(max-width:900px){
+@media (max-width:860px){
   .app{flex-direction:column}
-  .sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border)}
-  .grid{grid-template-columns:1fr}
+  .sidebar{width:100%;max-width:none}
+}
+kbd{
+  background:rgba(0,0,0,.25);
+  padding:2px 6px;
+  border-radius:6px;
+  border:1px solid var(--line);
+  font-size:12px;
+}
+pre{
+  background:rgba(0,0,0,.25);
+  padding:10px;
+  border-radius:12px;
+  overflow:auto;
+  border:1px solid var(--line);
 }
 </style>
 </head>
@@ -268,46 +224,57 @@ textarea{min-height:120px;resize:vertical}
 
   <!-- SIDEBAR -->
   <div class="sidebar">
+
     <div class="brand">
-      <h1>StudyBuddy AI</h1>
-      <p>Ultimate Hub (All in One)<br><span class="badge">Offline • No API</span></p>
+      <div>⭐ StudyBuddy AI</div>
+      <div class="small" id="userBadge">Guest</div>
+    </div>
+
+    <div class="btnrow">
+      <button class="btnAccent" onclick="toggleTheme()">🌗 Theme</button>
+      <button onclick="hardReset()">🔄 Reset</button>
     </div>
 
     <div class="nav">
-      <button class="btn active" id="nav-home" onclick="showPage('home')">🏠 Home</button>
-      <button class="btn" id="nav-ai" onclick="showPage('ai')">🤖 AI Chat</button>
-      <button class="btn" id="nav-exam" onclick="showPage('exam')">🧠 Exam Mode</button>
-      <button class="btn" id="nav-code" onclick="showPage('code')">💻 Coding Mode</button>
-      <button class="btn" id="nav-games" onclick="showPage('games')">🎮 Games Hub</button>
-      <button class="btn" id="nav-mc" onclick="showPage('minecraft')">⛏️ PRO Minecraft Game</button>
-      <button class="btn" id="nav-account" onclick="showPage('account')">🔐 Login / Signup</button>
+      <button onclick="showPage('home')">🏠 Home</button>
+      <button onclick="showPage('ai')">🤖 AI Chat</button>
+      <button onclick="showPage('exam')">📝 Exam</button>
+      <button onclick="showPage('coding')">💻 Coding</button>
+      <button onclick="showPage('games')">🎮 Games</button>
+      <button onclick="showPage('minecraft')">⛏ Minecraft</button>
+      <button onclick="showPage('islam')">🕌 Islam</button>
+      <button onclick="showPage('account')">🔐 Account</button>
     </div>
 
-    <div class="smallrow">
-      <button class="btn" onclick="toggleTheme()">🌗</button>
-      <button class="btn" onclick="exportAll()">⬇</button>
-      <button class="btn" onclick="resetAll()">🧹</button>
+    <hr>
+
+    <div class="card">
+      <h3>⚡ Quick Actions</h3>
+      <div class="pills">
+        <div class="pill" onclick="quickAsk('hi')">Hi</div>
+        <div class="pill" onclick="quickAsk('who are you')">Who are you?</div>
+        <div class="pill" onclick="quickAsk('what can you do')">What can you do?</div>
+        <div class="pill" onclick="quickAsk('capital of pakistan')">Capital of Pakistan</div>
+        <div class="pill" onclick="quickAsk('translate hello to urdu')">Translate</div>
+        <div class="pill" onclick="quickAsk('summarize: I love minecraft and coding')">Summarize</div>
+      </div>
+      <div style="margin-top:10px" class="small">
+        Tip: Press <kbd>Enter</kbd> to send in chat.
+      </div>
     </div>
 
-    <div class="footer">
-      <b>Modes:</b> AI • Exam • Coding • Games • Minecraft<br>
-      <b>Accounts:</b> Local Login + Guest Mode<br>
-      <b>Version:</b> INFINITY (Ultimate)
+    <div class="card">
+      <h3>💾 Export</h3>
+      <button style="width:100%" onclick="exportChat()">⬇ Export Chat (.txt)</button>
     </div>
+
   </div>
 
   <!-- MAIN -->
   <div class="main">
-
     <div class="topbar">
-      <div class="left">
-        <div class="pill" id="statusUser">User: Guest</div>
-        <div class="pill" id="statusMode">Mode: HOME</div>
-      </div>
-      <div class="right">
-        <button class="iconbtn" onclick="guestMode()">Continue as Guest</button>
-        <button class="iconbtn" onclick="showPage('account')">Account</button>
-      </div>
+      <div class="pageTitle" id="pageTitle">Home</div>
+      <div class="small" id="statusText">Ready</div>
     </div>
 
     <div class="pages">
@@ -315,176 +282,579 @@ textarea{min-height:120px;resize:vertical}
       <!-- HOME -->
       <div class="page active" id="page-home">
         <div class="card">
-          <h2>🏠 Welcome</h2>
-          <div class="sub">
-            This is your <b>StudyBuddy AI - Ultimate Hub</b>.<br>
-            Everything is inside one file.
+          <h3>🚀 Welcome</h3>
+          <div class="small">
+            This is your <b>All-in-One</b> app:
+            AI Chat + Exam Mode + Coding Mode + Games + Minecraft Mini Game + Islamic Mode + Account System.
           </div>
-          <hr>
-          <div class="grid">
-            <div class="gameBtn" onclick="showPage('ai')">🤖 Open AI Chat</div>
-            <div class="gameBtn" onclick="showPage('exam')">🧠 Open Exam Mode</div>
-            <div class="gameBtn" onclick="showPage('code')">💻 Open Coding Mode</div>
-            <div class="gameBtn" onclick="showPage('games')">🎮 Open Games Hub</div>
-            <div class="gameBtn" onclick="showPage('minecraft')">⛏️ Open PRO Minecraft</div>
-            <div class="gameBtn" onclick="showPage('account')">🔐 Login / Signup</div>
+        </div>
+
+        <div class="grid2" style="margin-top:12px">
+          <div class="card">
+            <h3>🤖 AI Features</h3>
+            <div class="small">
+              • Answers common questions<br>
+              • General knowledge (offline mini)<br>
+              • Math solver<br>
+              • Translate (basic)<br>
+              • Summarize text<br>
+              • Coding helper
+            </div>
           </div>
-          <hr>
-          <div class="note">
-            ✅ Buttons work because all functions are inside this file.<br>
-            ✅ No service worker. No external files needed.
+          <div class="card">
+            <h3>🔐 Account</h3>
+            <div class="small">
+              • Sign Up / Login (Offline LocalStorage)<br>
+              • Guest mode (no account needed)<br>
+              • Remembers you on same browser
+            </div>
           </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>🎮 Minecraft</h3>
+          <div class="small">
+            A mini Minecraft-style click game is included inside this app.
+            (Real Minecraft cannot run inside command prompt.)
+          </div>
+          <button class="btnGood" style="margin-top:10px;width:100%" onclick="showPage('minecraft')">
+            ⛏ Open Minecraft Mini Game
+          </button>
         </div>
       </div>
 
       <!-- AI CHAT -->
       <div class="page" id="page-ai">
         <div class="card">
-          <h2>🤖 AI Chat</h2>
-          <div class="sub">Ask anything (offline smart rules).</div>
+          <h3>🤖 StudyBuddy AI Chat</h3>
 
-          <div class="chatWrap">
-            <div class="chatWindow" id="aiChat"></div>
+          <div class="chatWindow" id="chatWindow"></div>
 
-            <div class="chatInput">
-              <input id="aiInput" placeholder="Type... (Enter to send)" onkeydown="if(event.key==='Enter')aiSend()">
-              <button class="btn green" style="flex:0.35" onclick="aiSend()">Send</button>
-            </div>
+          <div class="footerInput">
+            <input class="input" id="chatInput" placeholder="Type message..." />
+            <button class="btnGood" onclick="sendChat()">▶</button>
+          </div>
 
-            <div class="row">
-              <button class="btn" onclick="aiQuick('hi')">Hi</button>
-              <button class="btn" onclick="aiQuick('what can you do')">What can you do?</button>
-              <button class="btn" onclick="aiQuick('who made you')">Who made you?</button>
-            </div>
+          <div class="tools">
+            <button onclick="clearChat()">🧹 Clear</button>
+            <button onclick="showPage('exam')">📝 Exam</button>
+            <button onclick="showPage('coding')">💻 Coding</button>
           </div>
         </div>
       </div>
 
-      <!-- EXAM MODE -->
+      <!-- EXAM -->
       <div class="page" id="page-exam">
         <div class="card">
-          <h2>🧠 Exam Mode</h2>
-          <div class="sub">Practice questions and instant answers.</div>
+          <h3>📝 Exam Mode</h3>
+          <div class="small">Ask questions like: capital, science, history, dates, definitions.</div>
 
-          <div class="chatWrap">
-            <div class="chatWindow" id="examChat"></div>
-
-            <div class="chatInput">
-              <input id="examInput" placeholder="Ask exam question..." onkeydown="if(event.key==='Enter')examSend()">
-              <button class="btn blue" style="flex:0.35" onclick="examSend()">Ask</button>
-            </div>
-
-            <div class="row">
-              <button class="btn" onclick="examQuick('Capital of Pakistan?')">Capital of Pakistan</button>
-              <button class="btn" onclick="examQuick('6 × 6 = ?')">6×6</button>
-              <button class="btn" onclick="examQuick('What is AI?')">What is AI?</button>
-            </div>
+          <div style="margin-top:10px" class="footerInput">
+            <input class="input" id="examInput" placeholder="Ask exam question..." />
+            <button class="btnGood" onclick="sendExam()">Ask</button>
           </div>
+
+          <div id="examOut" style="margin-top:10px" class="card"></div>
         </div>
       </div>
 
-      <!-- CODING MODE -->
-      <div class="page" id="page-code">
+      <!-- CODING -->
+      <div class="page" id="page-coding">
         <div class="card">
-          <h2>💻 Coding Mode</h2>
-          <div class="sub">Get code snippets and programming help (offline rules).</div>
+          <h3>💻 Coding Mode</h3>
+          <div class="small">Ask: “Write JS code for calculator”, “Explain algorithm”, “HTML button”, etc.</div>
 
-          <div class="chatWrap">
-            <div class="chatWindow" id="codeChat"></div>
-
-            <div class="chatInput">
-              <input id="codeInput" placeholder="Ask coding question..." onkeydown="if(event.key==='Enter')codeSend()">
-              <button class="btn green" style="flex:0.35" onclick="codeSend()">Generate</button>
-            </div>
-
-            <div class="row">
-              <button class="btn" onclick="codeQuick('best languages for AI')">Best AI Languages</button>
-              <button class="btn" onclick="codeQuick('write a javascript function')">JS Function</button>
-              <button class="btn" onclick="codeQuick('html template')">HTML Template</button>
-            </div>
+          <div style="margin-top:10px" class="footerInput">
+            <input class="input" id="codeInput" placeholder="Ask coding question..." />
+            <button class="btnGood" onclick="sendCoding()">Ask</button>
           </div>
+
+          <div id="codeOut" style="margin-top:10px" class="card"></div>
         </div>
       </div>
 
       <!-- GAMES -->
       <div class="page" id="page-games">
         <div class="card">
-          <h2>🎮 Games Hub</h2>
-          <div class="sub">Offline mini games list + quick games.</div>
+          <h3>🎮 Games Hub</h3>
+          <div class="small">Pick a game:</div>
 
-          <input id="gameSearch" placeholder="Search games..." oninput="renderGames()">
+          <div class="pills" style="margin-top:10px">
+            <div class="pill" onclick="gameNumberGuess()">🎲 Number Guess</div>
+            <div class="pill" onclick="gameRPS()">✊✋✌ Rock Paper Scissors</div>
+            <div class="pill" onclick="gameTyping()">⌨ Typing Speed</div>
+            <div class="pill" onclick="gameQuiz()">🧠 Quick Quiz</div>
+          </div>
 
-          <hr>
+          <div id="gameOut" style="margin-top:10px" class="card"></div>
+        </div>
+      </div>
 
-          <div class="grid" id="gameGrid"></div>
+      <!-- MINECRAFT -->
+      <div class="page" id="page-minecraft">
+        <div class="card">
+          <h3>⛏ PRO MINECRAFT GAME (Mini)</h3>
+          <div class="small">
+            This is a mini Minecraft-style game with:
+            mining, XP, levels, bosses, revive, destroy-world (safe).
+          </div>
 
-          <hr>
-          <div class="note">
-            Tip: Click a game name to play a simple version.
+          <div class="grid2" style="margin-top:10px">
+            <div class="card">
+              <h3>🎒 Player</h3>
+              <div id="mcStats" class="small"></div>
+              <div class="tools" style="margin-top:10px">
+                <button class="btnGood" onclick="mcMine()">⛏ Mine</button>
+                <button onclick="mcCraft()">🛠 Craft</button>
+              </div>
+              <div class="tools">
+                <button onclick="mcBoss()">🐉 Boss</button>
+                <button class="btnBad" onclick="mcDestroyWorld()">💥 Destroy World</button>
+              </div>
+              <div class="tools">
+                <button onclick="mcRevive()">❤️ Revive</button>
+                <button onclick="mcReset()">🔄 Reset MC</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>📜 Minecraft Log</h3>
+              <div id="mcLog" class="small" style="white-space:pre-wrap;min-height:260px"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- MINECRAFT GAME -->
-      <div class="page" id="page-minecraft">
+      <!-- ISLAM -->
+      <div class="page" id="page-islam">
         <div class="card">
-          <h2>⛏️ PRO MINECRAFT GAME</h2>
-          <div class="sub">Browser version (single file). Infinite bosses + commands.</div>
-
-          <div class="row">
-            <div class="pill">Day: <span id="mcDay">1</span></div>
-            <div class="pill">Area: <span id="mcArea">Plains</span></div>
-            <div class="pill">HP: <span id="mcHP">100</span></div>
-            <div class="pill">Food: <span id="mcFood">100</span></div>
+          <h3>🕌 Islamic Mode</h3>
+          <div class="pills">
+            <div class="pill" onclick="islamDua()">🤲 Dua</div>
+            <div class="pill" onclick="islamReminder()">🌙 Reminder</div>
+            <div class="pill" onclick="islamAyah()">📖 Ayah</div>
           </div>
-
-          <hr>
-
-          <div class="grid">
-            <div class="gameBtn" onclick="mcExplore()">🌍 Explore</div>
-            <div class="gameBtn" onclick="mcMine()">⛏️ Mine / Gather</div>
-            <div class="gameBtn" onclick="mcFight()">⚔️ Fight Mob</div>
-            <div class="gameBtn" onclick="mcBoss()">🐉 Boss Arena</div>
-            <div class="gameBtn" onclick="mcCraft()">🛠️ Craft</div>
-            <div class="gameBtn" onclick="mcSleep()">🌙 Sleep</div>
-          </div>
-
-          <hr>
-
-          <div class="codebox" id="mcLog"></div>
-
-          <hr>
-
-          <div class="chatInput">
-            <input id="mcCmd" class="mono" placeholder="Command Mode: /help" onkeydown="if(event.key==='Enter')mcCommand()">
-            <button class="btn blue" style="flex:0.35" onclick="mcCommand()">Run</button>
-          </div>
-
-          <div class="note">
-            Commands: <span class="mono">/help /stats /heal /kill /revive /give /destroyworld /god</span>
-          </div>
+          <div id="islamOut" style="margin-top:10px" class="card"></div>
         </div>
       </div>
 
       <!-- ACCOUNT -->
       <div class="page" id="page-account">
         <div class="card">
-          <h2>🔐 Login / Signup</h2>
-          <div class="sub">Local accounts (saved in browser). No Firebase needed.</div>
-
-          <div class="row">
-            <input id="accEmail" placeholder="Email">
-            <input id="accPass" type="password" placeholder="Password">
+          <h3>🔐 Account System (Offline)</h3>
+          <div class="small">
+            This works WITHOUT Firebase. It saves accounts in your browser (LocalStorage).
           </div>
 
-          <div class="row">
-            <button class="btn green" onclick="signup()">Sign Up</button>
-            <button class="btn blue" onclick="login()">Login</button>
-            <button class="btn red" onclick="logout()">Logout</button>
+          <div class="grid2" style="margin-top:12px">
+            <div class="card">
+              <h3>🆕 Sign Up</h3>
+              <div class="label">Email</div>
+              <input class="input" id="suEmail" placeholder="email@example.com" />
+              <div class="label" style="margin-top:8px">Password</div>
+              <input class="input" id="suPass" type="password" placeholder="password" />
+              <button class="btnGood" style="margin-top:10px;width:100%" onclick="signup()">Create Account</button>
+              <div id="suMsg" class="small" style="margin-top:8px"></div>
+            </div>
+
+            <div class="card">
+              <h3>🔑 Login</h3>
+              <div class="label">Email</div>
+              <input class="input" id="liEmail" placeholder="email@example.com" />
+              <div class="label" style="margin-top:8px">Password</div>
+              <input class="input" id="liPass" type="password" placeholder="password" />
+              <button class="btnAccent" style="margin-top:10px;width:100%" onclick="login()">Login</button>
+              <button class="btnBad" style="margin-top:10px;width:100%" onclick="logout()">Logout</button>
+              <div id="liMsg" class="small" style="margin-top:8px"></div>
+            </div>
           </div>
 
-          <hr>
+          <div class="card" style="margin-top:12px">
+            <h3>👤 Current User</h3>
+            <div class="small" id="whoAmI"></div>
+          </div>
+        </div>
+      </div>
 
-          <div class="row">
-            <button class="btn" onclick="guestMode()">Continue as Guest</button>
-            <button class="btn" onclick="showUsers
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* =========================
+   GLOBAL SAFE HELPERS
+========================= */
+"use strict";
+
+const $ = (id)=>document.getElementById(id);
+function setStatus(t){ $("statusText").innerText = t; }
+
+/* =========================
+   THEME
+========================= */
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  localStorage.setItem("SB_THEME", document.body.classList.contains("light") ? "light" : "dark");
+}
+(function loadTheme(){
+  const t = localStorage.getItem("SB_THEME") || "dark";
+  if(t==="light") document.body.classList.add("light");
+})();
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+function showPage(name){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  const page = $("page-"+name);
+  if(page) page.classList.add("active");
+
+  const titles={
+    home:"Home",
+    ai:"AI Chat",
+    exam:"Exam Mode",
+    coding:"Coding Mode",
+    games:"Games Hub",
+    minecraft:"PRO MINECRAFT GAME",
+    islam:"Islam Mode",
+    account:"Account"
+  };
+  $("pageTitle").innerText = titles[name] || "StudyBuddy AI";
+  setStatus("Opened: "+(titles[name]||name));
+}
+
+/* =========================
+   HARD RESET
+========================= */
+function hardReset(){
+  if(confirm("Reset app (chat + game logs)?")){
+    localStorage.removeItem("SB_CHATLOG");
+    localStorage.removeItem("MC_SAVE");
+    location.reload();
+  }
+}
+
+/* =========================
+   CHAT SYSTEM
+========================= */
+let chatLog = JSON.parse(localStorage.getItem("SB_CHATLOG")||"[]");
+
+function addChat(text, who){
+  const win = $("chatWindow");
+  const d = document.createElement("div");
+  d.className = "msg "+(who==="user"?"user":"bot");
+  d.innerText = text;
+  win.appendChild(d);
+  win.scrollTop = win.scrollHeight;
+
+  chatLog.push((who==="user"?"User: ":"AI: ")+text);
+  localStorage.setItem("SB_CHATLOG", JSON.stringify(chatLog));
+}
+
+function clearChat(){
+  if(!confirm("Clear chat?")) return;
+  chatLog=[];
+  localStorage.setItem("SB_CHATLOG","[]");
+  $("chatWindow").innerHTML="";
+  addChat("Chat cleared ✅","bot");
+}
+
+function exportChat(){
+  const txt = chatLog.join("\n");
+  const blob = new Blob([txt], {type:"text/plain"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "StudyBuddyAI_Chat.txt";
+  a.click();
+}
+
+function quickAsk(t){
+  showPage("ai");
+  $("chatInput").value = t;
+  sendChat();
+}
+
+function sendChat(){
+  const inp = $("chatInput");
+  const text = (inp.value||"").trim();
+  if(!text) return;
+  inp.value="";
+  addChat(text,"user");
+  setStatus("Thinking...");
+
+  setTimeout(()=>{
+    const ans = brain(text);
+    addChat(ans,"bot");
+    setStatus("Ready");
+  }, 250);
+}
+
+$("chatInput").addEventListener("keydown", (e)=>{
+  if(e.key==="Enter") sendChat();
+});
+
+/* =========================
+   OFFLINE AI BRAIN
+========================= */
+const capitals = {
+  "pakistan":"islamabad",
+  "france":"paris",
+  "japan":"tokyo",
+  "china":"beijing",
+  "india":"new delhi",
+  "saudi arabia":"riyadh",
+  "turkey":"ankara",
+  "uk":"london",
+  "united kingdom":"london",
+  "usa":"washington, d.c.",
+  "united states":"washington, d.c.",
+  "germany":"berlin",
+  "italy":"rome",
+  "spain":"madrid",
+  "canada":"ottawa",
+  "australia":"canberra",
+  "afghanistan":"kabul",
+  "iran":"tehran",
+  "iraq":"baghdad",
+  "qatar":"doha",
+  "uae":"abu dhabi",
+  "united arab emirates":"abu dhabi",
+  "bangladesh":"dhaka",
+  "nepal":"kathmandu",
+  "sri lanka":"sri jayawardenepura kotte",
+  "russia":"moscow",
+  "ukraine":"kyiv",
+  "egypt":"cairo",
+  "south africa":"pretoria"
+};
+
+const famous = {
+  "albert einstein":"Albert Einstein was a German-born physicist who developed the theory of relativity.",
+  "marie curie":"Marie Curie was a scientist who discovered radium and polonium and won two Nobel Prizes.",
+  "isaac newton":"Isaac Newton was a scientist who explained gravity and laws of motion.",
+  "elon musk":"Elon Musk is a technology entrepreneur (Tesla, SpaceX).",
+  "imran khan":"Imran Khan is a Pakistani politician and former cricket captain."
+};
+
+function safeMath(expr){
+  try{
+    if(!/^[0-9+\-*/(). %^ ]+$/.test(expr)) return null;
+    expr = expr.replaceAll("^","**");
+    const val = Function("return ("+expr+")")();
+    if(val===Infinity || Number.isNaN(val)) return null;
+    return val;
+  }catch{ return null; }
+}
+
+function summarizeText(s){
+  s = s.trim();
+  if(s.length<40) return "Summary: "+s;
+  const sentences = s.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const pick = sentences.slice(0,2).join(" ");
+  return "Summary: "+pick;
+}
+
+function translateBasic(q){
+  const lower=q.toLowerCase();
+  if(lower.includes("hello") && lower.includes("urdu")) return "Urdu: سلام (Assalam) / ہیلو";
+  if(lower.includes("thank you") && lower.includes("urdu")) return "Urdu: شکریہ (Shukriya)";
+  if(lower.includes("how are you") && lower.includes("urdu")) return "Urdu: آپ کیسے ہیں؟";
+  return null;
+}
+
+function brain(q){
+  const lower = q.toLowerCase().trim();
+
+  // greetings
+  if(["hi","hello","assalamualaikum","asalamualaikum","salam"].some(w=>lower===w || lower.startsWith(w+" "))){
+    return "Hello 😊 I am StudyBuddy AI. How can I help you today?";
+  }
+  if(lower.includes("how are you")){
+    return "I am good 😊 Alhamdulillah! How are you?";
+  }
+  if(lower.includes("who are you")){
+    return "I am StudyBuddy AI (Offline). I can help with study, coding, math, quizzes, and games.";
+  }
+  if(lower.includes("what can you do")){
+    return "I can: ✅ Answer questions, ✅ Solve math, ✅ Help with coding, ✅ Summarize, ✅ Translate, ✅ Run mini games, ✅ Minecraft mini game.";
+  }
+  if(lower.includes("who made you")){
+    return "You made me 🌟 With Allah’s help 🤍";
+  }
+
+  // capital of
+  const capMatch = lower.match(/capital of (.+)/);
+  if(capMatch){
+    const c = capMatch[1].replace("?","").trim();
+    const key = c.toLowerCase();
+    if(capitals[key]) return "Capital of "+c+" is: "+capitals[key].toUpperCase()+" ✅";
+    return "I don't know the capital of "+c+" in my offline database. (You can add it in code.)";
+  }
+
+  // famous person
+  const whoMatch = lower.match(/^who is (.+)\??$/);
+  if(whoMatch){
+    const name = whoMatch[1].trim().toLowerCase();
+    if(famous[name]) return famous[name];
+  }
+
+  // formula
+  if(lower.includes("formula for water")) return "Water formula is: H₂O";
+  if(lower.includes("formula for carbon dioxide")) return "Carbon dioxide formula is: CO₂";
+  if(lower.includes("formula for sodium chloride") || lower.includes("salt")) return "Salt (Sodium Chloride) formula is: NaCl";
+
+  // definition
+  if(lower.includes("what is artificial intelligence") || lower==="what is ai"){
+    return "Artificial Intelligence (AI) is technology that allows computers to learn, reason, and act in smart ways (like humans).";
+  }
+  if(lower.includes("machine learning")){
+    return "Machine Learning is a part of AI where computers learn from data instead of being programmed with fixed rules.";
+  }
+  if(lower.includes("neural network")){
+    return "Neural Networks are AI models inspired by the brain, used for learning patterns (images, text, speech).";
+  }
+
+  // translate
+  const tr = translateBasic(lower);
+  if(tr) return tr;
+
+  // summarize
+  if(lower.startsWith("summarize:")){
+    return summarizeText(q.slice(10));
+  }
+
+  // math
+  const m = safeMath(lower);
+  if(m!==null) return "Answer: "+m;
+
+  // date/time
+  if(lower.includes("time")){
+    return "Current time: "+new Date().toLocaleTimeString();
+  }
+  if(lower.includes("date")){
+    return "Today's date: "+new Date().toLocaleDateString();
+  }
+
+  // fallback
+  return "I understand 😊 Ask me about:\n• Capitals\n• Science formulas\n• Math\n• Coding\n• Summarize / Translate\n• Minecraft mini game";
+}
+
+/* =========================
+   EXAM MODE
+========================= */
+function sendExam(){
+  const t = ($("examInput").value||"").trim();
+  if(!t) return;
+  $("examInput").value="";
+  $("examOut").innerText = brain(t);
+}
+$("examInput").addEventListener("keydown",(e)=>{ if(e.key==="Enter") sendExam(); });
+
+/* =========================
+   CODING MODE
+========================= */
+function sendCoding(){
+  const t = ($("codeInput").value||"").trim();
+  if(!t) return;
+  $("codeInput").value="";
+  $("codeOut").innerHTML = "<pre>"+codingBrain(t)+"</pre>";
+}
+$("codeInput").addEventListener("keydown",(e)=>{ if(e.key==="Enter") sendCoding(); });
+
+function codingBrain(q){
+  const lower=q.toLowerCase();
+  if(lower.includes("best coding languages for ai")){
+    return "Best languages for AI:\n1) Python (BEST)\n2) R\n3) Java\n4) C++\n5) JavaScript (web AI)\n";
+  }
+  if(lower.includes("calculator")){
+    return `HTML+JS Calculator (mini):\n\n<input id="a"><input id="b">\n<button onclick="alert(+a.value + +b.value)">Add</button>`;
+  }
+  if(lower.includes("hello world")){
+    return `JavaScript:\nconsole.log("Hello World");\n\nPython:\nprint("Hello World")`;
+  }
+  if(lower.includes("algorithm")){
+    return "Algorithm = step-by-step method to solve a problem.\nExample: Bubble Sort compares neighbors and swaps.";
+  }
+  return "Coding helper:\nAsk like:\n• Write HTML button\n• JS game\n• Python function\n• Explain algorithm";
+}
+
+/* =========================
+   ISLAM MODE
+========================= */
+function islamDua(){
+  $("islamOut").innerText = "🤲 Dua:\nAllahumma zidni ilma.\n(O Allah increase me in knowledge.)";
+}
+function islamReminder(){
+  $("islamOut").innerText = "🌙 Reminder:\nPray 5 times daily.\nSay Alhamdulillah.\nTrust Allah 🤍";
+}
+function islamAyah(){
+  $("islamOut").innerText = "📖 Ayah:\nإِنَّ مَعَ الْعُسْرِ يُسْرًا\nIndeed, with hardship comes ease.";
+}
+
+/* =========================
+   GAMES
+========================= */
+let typingStart=0;
+let typingTarget="";
+
+function gameNumberGuess(){
+  const n = Math.floor(Math.random()*10)+1;
+  $("gameOut").innerHTML =
+    "🎲 I picked a number 1-10.\nType your guess below:\n\n"+
+    `<div class="footerInput">
+      <input class="input" id="ngIn" placeholder="1-10">
+      <button class="btnGood" onclick="ngCheck(${n})">Check</button>
+    </div>`;
+}
+function ngCheck(n){
+  const v = parseInt(($("ngIn").value||"").trim());
+  if(v===n) $("gameOut").innerText="✅ Correct! Number was "+n;
+  else $("gameOut").innerText="❌ Wrong. Number was "+n+" (Try again)";
+}
+
+function gameRPS(){
+  $("gameOut").innerHTML =
+    "✊✋✌ Rock Paper Scissors:\n\n"+
+    `<div class="tools">
+      <button onclick="rps('rock')">Rock</button>
+      <button onclick="rps('paper')">Paper</button>
+      <button onclick="rps('scissors')">Scissors</button>
+    </div>`;
+}
+function rps(user){
+  const opts=["rock","paper","scissors"];
+  const bot=opts[Math.floor(Math.random()*3)];
+  let res="";
+  if(user===bot) res="Draw 🤝";
+  else if((user==="rock"&&bot==="scissors")||(user==="paper"&&bot==="rock")||(user==="scissors"&&bot==="paper")) res="You Win 🏆";
+  else res="You Lose 😅";
+  $("gameOut").innerText = `You: ${user}\nAI: ${bot}\n\n${res}`;
+}
+
+function gameTyping(){
+  const words=["minecraft","studybuddy","javascript","pakistan","islamabad","algorithm","computer","keyboard","developer"];
+  typingTarget = words[Math.floor(Math.random()*words.length)];
+  typingStart = Date.now();
+  $("gameOut").innerHTML =
+    "⌨ Typing Speed:\nType this word FAST:\n\n"+
+    "<b style='font-size:22px'>"+typingTarget+"</b>\n\n"+
+    `<div class="footerInput">
+      <input class="input" id="tpIn" placeholder="type here">
+      <button class="btnGood" onclick="tpCheck()">Done</button>
+    </div>`;
+}
+function tpCheck(){
+  const v = ($("tpIn").value||"").trim();
+  if(v!==typingTarget){
+    $("gameOut").innerText="❌ Wrong spelling. Try again.\nTarget: "+typingTarget;
+    return;
+  }
+  const ms = Date.now()-typingStart;
+  $("gameOut").innerText="✅ Perfect!\nTime: "+(ms/1000).toFixed(2)+" seconds";
+}
+
+function gameQuiz(){
+  const qs=[
+    {q:"Capital of Pakistan?", a:"islamabad"},
+    {q:"6 × 6 = ?", a:"36
