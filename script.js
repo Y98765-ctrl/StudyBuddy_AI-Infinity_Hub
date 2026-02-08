@@ -242,7 +242,7 @@ function handleChat(q) {
   }
   if (lower.includes("who made you")) {
     addMsg(
-      "I was made by YOU (Yousaf) 💙\nYou are building this app using HTML, CSS, and JavaScript.",
+      "I was made by young muslim developer (Yousaf) 💙\nHe built this app using HTML, CSS, and JavaScript.",
       "bot"
     );
     return;
