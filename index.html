@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StudyBuddy AI - Infinity Hub</title>
+  <title>StudyBuddy AI - Ultimate Hub</title>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
@@ -25,13 +25,14 @@
         <img src="logo.png" class="logo" alt="Logo" />
         <div>
           <div class="title">StudyBuddy AI</div>
-          <div class="subtitle">Infinity Hub • Offline AI</div>
+          <div class="subtitle">Ultimate Hub • Offline AI • PWA</div>
         </div>
       </div>
 
       <div class="headerBtns">
+        <button class="btn" id="installBtn" title="Install App">⬇️</button>
         <button class="btn" id="themeBtn" title="Theme">🌗</button>
-        <button class="btn" id="exportBtn" title="Export Chat">⬇</button>
+        <button class="btn" id="exportBtn" title="Export Chat">📄</button>
         <button class="btn danger" id="resetBtn" title="Reset">⟲</button>
       </div>
     </header>
@@ -41,7 +42,7 @@
       <div class="card">
         <h2>🔐 Login / Sign Up</h2>
         <p class="muted">
-          Offline login system (LocalStorage). No server required. Works on GitHub Pages.
+          Offline account system (LocalStorage). Works on GitHub Pages.
         </p>
 
         <div class="form">
@@ -71,12 +72,17 @@
         <button class="tab" data-mode="quiz">🧠 Quiz</button>
         <button class="tab" data-mode="games">🎮 Games</button>
         <button class="tab" data-mode="islam">🕌 Islam</button>
+        <button class="tab" data-mode="tools">🧰 Tools</button>
       </nav>
 
       <!-- USER BAR -->
       <div class="userBar">
         <div id="userLabel">👤 Guest Mode</div>
-        <button class="btn small danger" id="logoutBtn">Logout</button>
+        <div class="userBarBtns">
+          <button class="btn small" id="ttsBtn" title="Text to Speech">🔊</button>
+          <button class="btn small" id="voiceBtn" title="Voice Input">🎤</button>
+          <button class="btn small danger" id="logoutBtn">Logout</button>
+        </div>
       </div>
 
       <!-- CHAT WINDOW -->
@@ -87,7 +93,6 @@
         <input id="input" placeholder="Type here..." />
         <button id="sendBtn">▶</button>
       </div>
-
     </section>
   </div>
 
