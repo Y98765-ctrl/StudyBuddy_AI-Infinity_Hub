@@ -1,11 +1,16 @@
 {
-  "name": "StudyBuddy AI - Infinity Hub",
+  "name": "StudyBuddy AI - Ultimate Hub",
   "short_name": "StudyBuddy AI",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b1225",
   "theme_color": "#0b1225",
   "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
     {
       "src": "logo.png",
       "sizes": "512x512",
