@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StudyBuddy AI - Ultimate Hub</title>
+  <title>StudyBuddy AI - Infinity Hub</title>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
@@ -15,7 +15,6 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <div class="app">
 
@@ -25,15 +24,15 @@
         <img src="logo.png" class="logo" alt="Logo" />
         <div>
           <div class="title">StudyBuddy AI</div>
-          <div class="subtitle">Ultimate Hub • Offline AI • PWA</div>
+          <div class="subtitle">Infinity Hub • Offline AI</div>
+          <div class="versionText" id="versionText">v1.0 (Free)</div>
         </div>
       </div>
 
       <div class="headerBtns">
-        <button class="btn" id="installBtn" title="Install App">⬇️</button>
         <button class="btn" id="themeBtn" title="Theme">🌗</button>
-        <button class="btn" id="exportBtn" title="Export Chat">📄</button>
-        <button class="btn danger" id="resetBtn" title="Reset">⟲</button>
+        <button class="btn" id="exportBtn" title="Export Chat">⬇</button>
+        <button class="btn danger" id="resetBtn" title="Reset Chat">⟲</button>
       </div>
     </header>
 
@@ -42,7 +41,7 @@
       <div class="card">
         <h2>🔐 Login / Sign Up</h2>
         <p class="muted">
-          Offline account system (LocalStorage). Works on GitHub Pages.
+          Offline login system (LocalStorage). No server needed. Works on GitHub Pages.
         </p>
 
         <div class="form">
@@ -56,7 +55,6 @@
         </div>
 
         <button class="bigBtn ghost" id="guestBtn">👤 Use Without Login</button>
-
         <div id="authMsg" class="msgBox"></div>
       </div>
     </section>
@@ -64,25 +62,23 @@
     <!-- MAIN APP PAGE -->
     <section id="page-app" class="page">
 
-      <!-- TOP NAV -->
-      <nav class="tabs">
-        <button class="tab active" data-mode="chat">💬 Chat</button>
-        <button class="tab" data-mode="ai">🤖 AI Learn</button>
-        <button class="tab" data-mode="math">➗ Math</button>
-        <button class="tab" data-mode="quiz">🧠 Quiz</button>
-        <button class="tab" data-mode="games">🎮 Games</button>
-        <button class="tab" data-mode="islam">🕌 Islam</button>
-        <button class="tab" data-mode="tools">🧰 Tools</button>
-      </nav>
+      <!-- VERSION BAR -->
+      <div class="versionBar">
+        <div class="vLeft">
+          <span class="badge" id="versionBadge">FREE</span>
+          <span id="versionInfo">You are using StudyBuddy AI v1.0</span>
+        </div>
+
+        <div class="vRight">
+          <button class="bigBtn small" id="upgradeBtn">⭐ Upgrade to v1.1</button>
+          <button class="bigBtn small danger" id="downgradeBtn">⬅ Back to v1.0</button>
+        </div>
+      </div>
 
       <!-- USER BAR -->
       <div class="userBar">
         <div id="userLabel">👤 Guest Mode</div>
-        <div class="userBarBtns">
-          <button class="btn small" id="ttsBtn" title="Text to Speech">🔊</button>
-          <button class="btn small" id="voiceBtn" title="Voice Input">🎤</button>
-          <button class="btn small danger" id="logoutBtn">Logout</button>
-        </div>
+        <button class="btn small danger" id="logoutBtn">Logout</button>
       </div>
 
       <!-- CHAT WINDOW -->
@@ -94,6 +90,7 @@
         <button id="sendBtn">▶</button>
       </div>
     </section>
+
   </div>
 
   <script src="script.js"></script>
