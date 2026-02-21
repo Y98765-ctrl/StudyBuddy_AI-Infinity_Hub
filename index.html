@@ -1,98 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StudyBuddy AI - Infinity Hub</title>
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#0b1225" />
-
-  <!-- Icons -->
-  <link rel="icon" href="logo.png" />
-  <link rel="apple-touch-icon" href="logo.png" />
-
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Study Buddy AI - Infinity Hub</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="app">
 
-    <!-- HEADER -->
-    <header class="header">
-      <div class="logoArea">
-        <img src="logo.png" class="logo" alt="Logo" />
-        <div>
-          <div class="title">StudyBuddy AI</div>
-          <div class="subtitle">Infinity Hub • Offline AI</div>
-          <div class="versionText" id="versionText">v1.0 (Free)</div>
-        </div>
-      </div>
+<header id="appHeader">
+    <h1>Happy Study Buddy AI</h1>
+    <span id="versionBadge">v1.0 Free</span>
+</header>
 
-      <div class="headerBtns">
-        <button class="btn" id="themeBtn" title="Theme">🌗</button>
-        <button class="btn" id="exportBtn" title="Export Chat">⬇</button>
-        <button class="btn danger" id="resetBtn" title="Reset Chat">⟲</button>
-      </div>
-    </header>
+<div id="chatContainer"></div>
 
-    <!-- LOGIN PAGE -->
-    <section id="page-login" class="page active">
-      <div class="card">
-        <h2>🔐 Login / Sign Up</h2>
-        <p class="muted">
-          Offline login system (LocalStorage). No server needed. Works on GitHub Pages.
-        </p>
+<div class="controls">
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
 
-        <div class="form">
-          <input id="authEmail" type="email" placeholder="Email address" autocomplete="username" />
-          <input id="authPass" type="password" placeholder="Password" autocomplete="current-password" />
-        </div>
+<div class="versionControls">
+    <button id="upgradeBtn" onclick="upgradeVersion()">Upgrade to v1.1</button>
+    <button id="downgradeBtn" onclick="downgradeVersion()" style="display:none;">Back to v1.0</button>
+</div>
 
-        <div class="row">
-          <button class="bigBtn" id="signupBtn">🆕 Sign Up</button>
-          <button class="bigBtn" id="loginBtn">✅ Login</button>
-        </div>
-
-        <button class="bigBtn ghost" id="guestBtn">👤 Use Without Login</button>
-        <div id="authMsg" class="msgBox"></div>
-      </div>
-    </section>
-
-    <!-- MAIN APP PAGE -->
-    <section id="page-app" class="page">
-
-      <!-- VERSION BAR -->
-      <div class="versionBar">
-        <div class="vLeft">
-          <span class="badge" id="versionBadge">FREE</span>
-          <span id="versionInfo">You are using StudyBuddy AI v1.0</span>
-        </div>
-
-        <div class="vRight">
-          <button class="bigBtn small" id="upgradeBtn">⭐ Upgrade to v1.1</button>
-          <button class="bigBtn small danger" id="downgradeBtn">⬅ Back to v1.0</button>
-        </div>
-      </div>
-
-      <!-- USER BAR -->
-      <div class="userBar">
-        <div id="userLabel">👤 Guest Mode</div>
-        <button class="btn small danger" id="logoutBtn">Logout</button>
-      </div>
-
-      <!-- CHAT WINDOW -->
-      <div id="chat" class="chat"></div>
-
-      <!-- INPUT -->
-      <div class="bottom">
-        <input id="input" placeholder="Type here..." />
-        <button id="sendBtn">▶</button>
-      </div>
-    </section>
-
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
